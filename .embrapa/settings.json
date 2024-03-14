@@ -1,0 +1,21 @@
+{
+    "_boilerplate": "pwa em next js",
+    "platform": "javascript",
+    "label": "Instância básica do next js como pwa em fomrato de cartilha de conteúdo",
+    "description": "PWA em next js resgatando dados em uma api strapi",
+    "references": [
+      { "label": "Site oficial do nextjs", "url": "https://nextjs.org/"}
+    ],
+    "maintainers": [
+        { "name": "Guilherme Silva Sampaio", "email": "guilhermessampaio20@gmail.com", "phone": "+55 (67) 9 8194-2502" }
+    ],
+    "variables": {
+      "default": [
+      ],
+      "alpha": [],
+      "beta": [],
+      "release": [
+      ]
+    },
+    "orchestrators": [ "DockerCompose", "DockerSwarm" ]
+  }

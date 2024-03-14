@@ -1,0 +1,25 @@
+version: '3.1'
+
+services:  
+  nextjs:
+    build:
+      context: ./ # Substitua pelo caminho para o seu código-fonte do Next.js
+      dockerfile: Dockerfile
+    container_name: meu-nextjs
+    ports:
+      - "3000:3000"
+
+  backup:
+    image: tianon/true
+    restart: "no"
+    profiles:
+      - cli
+
+  restore:
+    image: tianon/true
+    restart: "no"
+    profiles:
+      - cli
+      
+networks:
+  local_network: #precisa mudar o network?
