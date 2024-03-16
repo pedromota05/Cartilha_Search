@@ -71,8 +71,8 @@ export const HomePage = () => {
                                 </li>
                             </ul>
                             {/* Input Search para tela maior que 992px */}
-                            <div id="searchForm" className="search-container position-relative p-1">
-                                <div className="search-bar-container">
+                            <div id="searchForm" className="search-container">
+                                <div className="d-flex position-relative p-1 search-bar-container">
                                     <SearchBar setResults={setResults} />
                                     {results && results.length > 0 && <SearchResultsList results={results} />}
                                 </div>
