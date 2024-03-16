@@ -163,6 +163,7 @@ hr {
 /* Estilo Navbar */
 .navbar-nav {
   align-items: center;
+  --mdb-nav-link-padding-y: 0 !important;
 } 
 
 .nav-item a {
@@ -176,13 +177,8 @@ hr {
   color: #3578e5;
 }
 
-.icone-search-cap {
-  background-color: transparent;
-  position: absolute;
-  top: 50%;
-  right: 12px;
-  transform: translateY(-50%);
-  z-index: 10 !important;
+.rounded-pill {
+  margin-top: -4px;
 }
 /* Fim Estilo Navbar */
 
@@ -516,11 +512,11 @@ hr {
     font-size: 14px !important;
     margin-right: 0 !important;
   }
-  .rounded-pill {
-    width: 180px;
-  }
   .pagination-nav__link {
     margin-right: 20px !important;
+  }
+  .rounded-pill {
+    margin-top: -14px !important;
   }
 }
 
@@ -575,9 +571,6 @@ hr {
     justify-content: flex-end; 
     align-items: center; 
     margin-right: 15px; 
-  }
-  .rounded-pill {
-    width: 250px;
   }
   .navbar-brand {
     margin-right: auto;
