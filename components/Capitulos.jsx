@@ -104,7 +104,7 @@ export const Capitulos = () => {
     };
 
     const CarregaCapitulos = async () => {
-        const url = 'http://localhost:1337/api/capitulos?populate=*';
+        const url = 'https://api-cartilha-teste-production.up.railway.app/api/capitulos?populate=*';
         try {
             const response = await fetch(url);
             if (response.ok) {
@@ -263,8 +263,8 @@ export const Capitulos = () => {
                             </li>
                             {/* Input Search para tela maior que 992px */}
                             <div className="hide-form-search2">
-                                <form className="d-flex rounded-pill p-1 position-relative first-form-search" role="search">
-                                    <div className="search-bar-container">
+                                <form className="d-flex rounded-pill position-relative first-form-search" role="search">
+                                    <div className="search-bar-container p-1">
                                         <SearchBar setResults={setResults} />
                                         {results && results.length > 0 && <SearchResultsList results={results} />}
                                     </div>
