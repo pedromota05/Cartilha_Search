@@ -2,10 +2,11 @@ import { useState } from "react";
 
 export const SearchBar = ({ setResults }) => {
   const [input, setInput] = useState("");
+  const [hasResults, setHasResults] = useState(true); // Inicialmente assumimos que há resultados
 
   const fetchData = (value) => {
     console.log("Valor da pesquisa:", value);
-    fetch("http://localhost:1337/api/capitulos")
+    fetch("https://api-cartilha-teste-production.up.railway.app/api/capitulos")
       .then((response) => response.json())
       .then((data) => {
         console.log("Dados retornados pela API:", data);
@@ -19,6 +20,12 @@ export const SearchBar = ({ setResults }) => {
         });
         console.log("Resultados filtrados:", results);
         setResults(results);
+        setHasResults(results.length > 0); // Atualiza se há resultados ou não
+      })
+      .catch((error) => {
+        console.error("Erro ao buscar dados:", error);
+        setResults([]); // Define os resultados como vazios em caso de erro
+        setHasResults(false); // Não há resultados se houver erro
       });
   };  
 
@@ -36,6 +43,7 @@ export const SearchBar = ({ setResults }) => {
         value={input}
         onChange={(e) => handleChange(e.target.value)}
       />
+      {!hasResults && <div className="results-list"><p className='result-nulo'>Nenhum resultado encontrado.</p></div>}
     </div>
   );
 };
