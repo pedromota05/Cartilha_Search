@@ -8,14 +8,19 @@ import { SearchBar } from "./SearchBar.jsx";
 import { SearchResultsList } from "./SearchResultsList.jsx";
 
 export const HomePage = () => {
-    const [results, setResults] = useState([]);
     //Importação das Imagens
     var LogoIF = require('../public/ifms-dr-marca-2015.png');
     var LogoEmbrapa = require('../public/logo-embrapa-400.png');
     var LogoIFEmbrapa = require('../public/logo-if-embrapa.png');
     var LogoCartilha = require('../public/logo-cartilha.svg');   
     var Harley = require('../public/harley.png');   
+
+    const [results, setResults] = useState([]);
     
+    const handleCloseResults = () => {
+        setResults([]); // Limpa os resultados
+    };
+
     return(
         <>
             <Head>
@@ -39,7 +44,7 @@ export const HomePage = () => {
                     <div className="search-container first-form-search p-1">
                         <div className="search-bar-container">
                             <SearchBar setResults={setResults} />
-                            {results && results.length > 0 && <SearchResultsList results={results} />}
+                            {results && results.length > 0 && <SearchResultsList results={results} handleCloseResults={handleCloseResults} />}
                         </div>
                     </div>
 
@@ -74,7 +79,7 @@ export const HomePage = () => {
                             <div id="searchForm" className="search-container">
                                 <div className="d-flex position-relative p-1 search-bar-container">
                                     <SearchBar setResults={setResults} />
-                                    {results && results.length > 0 && <SearchResultsList results={results} />}
+                                    {results && results.length > 0 && <SearchResultsList results={results}  handleCloseResults={handleCloseResults}/>}
                                 </div>
                             </div>
                             <ul className="navbar-nav d-flex links-logo flex-row">
