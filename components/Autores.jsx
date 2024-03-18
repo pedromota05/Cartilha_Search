@@ -14,6 +14,10 @@ export const Autores = () => {
 
     const [results, setResults] = useState([]);
 
+    const handleCloseResults = () => {
+        setResults([]); // Limpa os resultados
+    };
+
     //Fetch para pegar os dados da api Autors criada no Strapi
     const [data, setData] = useState([]);
     useEffect(() => {
@@ -59,7 +63,7 @@ export const Autores = () => {
                     <div className="search-container first-form-search p-1">
                         <div className="search-bar-container">
                             <SearchBar setResults={setResults} />
-                            {results && results.length > 0 && <SearchResultsList results={results} />}
+                            {results && results.length > 0 && <SearchResultsList results={results} handleCloseResults={handleCloseResults} />}
                         </div>
                     </div>
 
@@ -94,7 +98,7 @@ export const Autores = () => {
                             <div id="searchForm" className="search-container position-relative p-1">
                                 <div className="search-bar-container">
                                     <SearchBar setResults={setResults} />
-                                    {results && results.length > 0 && <SearchResultsList results={results} />}
+                                    {results && results.length > 0 && <SearchResultsList results={results} handleCloseResults={handleCloseResults} />}
                                 </div>
                             </div>
                             <ul className="navbar-nav d-flex links-logo flex-row">
