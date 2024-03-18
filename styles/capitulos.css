@@ -403,10 +403,6 @@ hr {
 }
 
 @media (pointer: fine) {
-  .thin-scrollbar-toc {
-    scrollbar-width:thin
-  }
-
   .thin-scrollbar-toc::-webkit-scrollbar {
     height: 7px;
     width: 7px;
