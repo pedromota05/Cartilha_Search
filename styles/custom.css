@@ -17,18 +17,16 @@ hr {
     min-height: 80vh;
 }
 
-
 #links-sites {
     color: #007bff; /* Cor padrão do texto do link */
     transition: transform 0.2s, color 0.2s; /* Adiciona transições suaves para a animação */
-  }
+}
   
-  #links-sites:hover {
+#links-sites:hover {
     color: #0000ff; /* Muda a cor do texto do link para azul ao passar o mouse */
     transform: scale(1.1); /* Aplica um zoom de 110% ao passar o mouse */
-  }
+}
   
-
 /* Estilo Navbar */
 .navbar {
     height: 70px;
@@ -38,6 +36,10 @@ hr {
 
 .offcanvas.offcanvas-start {
     width: 83vw !important;
+}
+
+.nav-link {
+    padding: 0.5rem !important;
 }
 
 .nav-item .nav-link {
@@ -493,6 +495,12 @@ footer .container-footer {
     /* Estilo Autores Card */
     .container-cards .card {
         width: 28%;
+    }
+}
+
+@media screen and (min-width: 992px) and (max-width: 1129px) {
+    #searchForm {
+        margin-top: 8px;
     }
 }
 
