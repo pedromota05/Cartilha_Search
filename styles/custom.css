@@ -502,6 +502,9 @@ footer .container-footer {
     #searchForm {
         margin-top: 8px;
     }
+    .hide-form-search2 {
+        margin-top: 5px !important;
+    }
 }
 
 @media screen and (min-width: 850px) and (max-width: 1023px) {
