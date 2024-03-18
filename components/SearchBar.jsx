@@ -1,15 +1,14 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export const SearchBar = ({ setResults }) => {
   const [input, setInput] = useState("");
-  const [hasResults, setHasResults] = useState(true); // Inicialmente assumimos que há resultados
+  const [typingTimeout, setTypingTimeout] = useState(null);
+  const [showNoResultsMessage, setShowNoResultsMessage] = useState(false);
 
   const fetchData = (value) => {
-    console.log("Valor da pesquisa:", value);
     fetch("https://api-cartilha-teste-production.up.railway.app/api/capitulos")
       .then((response) => response.json())
       .then((data) => {
-        console.log("Dados retornados pela API:", data);
         const results = data.data.filter((capitulo) => {
           return (
             value &&
@@ -18,21 +17,34 @@ export const SearchBar = ({ setResults }) => {
             capitulo.attributes.title.toLowerCase().includes(value.toLowerCase())
           );
         });
-        console.log("Resultados filtrados:", results);
         setResults(results);
-        setHasResults(results.length > 0); // Atualiza se há resultados ou não
+        setShowNoResultsMessage(results.length === 0 && value.trim() !== ""); 
       })
       .catch((error) => {
         console.error("Erro ao buscar dados:", error);
-        setResults([]); // Define os resultados como vazios em caso de erro
-        setHasResults(false); // Não há resultados se houver erro
+        setResults([]);
+        setShowNoResultsMessage(true);
       });
-  };  
+  };
 
   const handleChange = (value) => {
     setInput(value);
-    fetchData(value.toLowerCase());
+
+    if (typingTimeout) {
+      clearTimeout(typingTimeout);
+    }
+
+    const timeout = setTimeout(() => {
+      fetchData(value.toLowerCase());
+    }, 200);
+
+    setTypingTimeout(timeout);
   };
+
+  useEffect(() => {
+    setResults([]);
+    setShowNoResultsMessage(false);
+  }, [input]);
 
   return (
     <div className="input-wrapper">
@@ -43,7 +55,7 @@ export const SearchBar = ({ setResults }) => {
         value={input}
         onChange={(e) => handleChange(e.target.value)}
       />
-      {!hasResults && <div className="results-list"><p className='result-nulo'>Nenhum resultado encontrado.</p></div>}
+      {showNoResultsMessage && <div className="results-list"><p className='result-nulo'>Nenhum resultado encontrado para "{input}".</p></div>}
     </div>
   );
 };
