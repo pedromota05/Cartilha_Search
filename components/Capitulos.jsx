@@ -46,6 +46,10 @@ export const Capitulos = () => {
         setShowSummary(!showSummary);
     };
 
+    const handleCloseResults = () => {
+        setResults([]); // Limpa os resultados
+    };
+
     //Função para quando o usuário clicar no botão "← Voltar para o menu principal"
     const handleToggleMainNavbar = () => {
         const mainNavbarOptionsMenu = document.getElementById('main-navbar-options-menu');
@@ -266,7 +270,7 @@ export const Capitulos = () => {
                                 <form className="d-flex rounded-pill position-relative first-form-search" role="search">
                                     <div className="search-bar-container p-1">
                                         <SearchBar setResults={setResults} />
-                                        {results && results.length > 0 && <SearchResultsList results={results} />}
+                                        {results && results.length > 0 && <SearchResultsList results={results} handleCloseResults={handleCloseResults} />}
                                     </div>
                                 </form>
                             </div>
@@ -283,7 +287,7 @@ export const Capitulos = () => {
                                 <div className="input-group hide-form-search">
                                     <div className="search-bar-container">
                                         <SearchBar setResults={setResults} />
-                                        {results && results.length > 0 && <SearchResultsList results={results} />}
+                                        {results && results.length > 0 && <SearchResultsList results={results}  handleCloseResults={handleCloseResults} />}
                                     </div>
                                 </div>
                             </form>
